@@ -14,7 +14,7 @@ use std::io::Read;
 const BUFFER_SIZE: usize = 1024;
 
 /// Available algorithms for hashing
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 enum Algorithm {
     SHA256,
 }
@@ -30,12 +30,12 @@ impl FromStr for Algorithm {  // turn CLI-arg into enum
 }
 
 // Configuration for clap; CLI-tool
-/// A lightning-fast application for simple verification of hashes
+/// A simple tool for hashing files
 #[derive(Parser, Debug)]
 #[clap(about, version, author)]
 struct Arguments {
     /// Which hashing-algorithm to use
-    #[clap(short, long, required=false, default_value="SHA256")]
+    #[clap(short, long, required=true)]
     alg: Algorithm,
 
     /// Name of the file to hash
