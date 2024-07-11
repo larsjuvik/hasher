@@ -1,0 +1,61 @@
+# .NET build artifacts
+**/bin/
+**/obj/
+
+# Visual Studio files
+.vs/
+
+# NuGet packages
+*.nupkg
+
+# User-specific files
+*.suo
+*.user
+*.userprefs
+*.usertasks
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio code coverage results
+*.coverage
+*.coveragexml
+
+# Roslyn cache directories
+*.ide/
+*.sln.ide/
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject
+[Dd]oc[Ss]tyle.*
+
+# Local packages folder
+packages/
+
+# Compiled WebAssembly binaries
+*.wasm
+
+# Blazor WebAssembly cache
+blazor-cache/
+
+# Unity generated folders
+Library/
+Temp/

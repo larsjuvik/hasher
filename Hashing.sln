@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hashing", "Hashing\Hashing.csproj", "{3768D3ED-14B5-49B8-AFC8-28A451BA655C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FBD5106E-FFBC-4794-AECE-1828E18DF94F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hasher", "Hasher\Hasher.csproj", "{66CB760C-DB41-4C88-A1F8-9F30FCB81692}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3768D3ED-14B5-49B8-AFC8-28A451BA655C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3768D3ED-14B5-49B8-AFC8-28A451BA655C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3768D3ED-14B5-49B8-AFC8-28A451BA655C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3768D3ED-14B5-49B8-AFC8-28A451BA655C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD5106E-FFBC-4794-AECE-1828E18DF94F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD5106E-FFBC-4794-AECE-1828E18DF94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD5106E-FFBC-4794-AECE-1828E18DF94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD5106E-FFBC-4794-AECE-1828E18DF94F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
