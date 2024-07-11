@@ -1,6 +1,6 @@
 ﻿namespace Hashing;
 
-public class Class1
+public class HashService
 {
 
 }
