@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hashing", "Hashing\Hashing.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{FBD5106E-FFBC-4794-AECE-1828E18DF94F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hasher", "Hasher\Hasher.csproj", "{66CB760C-DB41-4C88-A1F8-9F30FCB81692}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{FBD5106E-FFBC-4794-AECE-1828E18DF94F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBD5106E-FFBC-4794-AECE-1828E18DF94F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBD5106E-FFBC-4794-AECE-1828E18DF94F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66CB760C-DB41-4C88-A1F8-9F30FCB81692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
