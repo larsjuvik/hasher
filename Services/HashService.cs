@@ -1,53 +1,34 @@
 ﻿namespace Hashing;
 
+using System.IO;
+
 public static class HashService
 {
     public static readonly string[] HashAlgorithms = new string[]
     {
-        "MD5",
-        "SHA1",
-        "SHA256",
-        "SHA384",
-        "SHA512"
+        "MD5"
     };
 
-    public static string MD5(string input)
+    /// <summary>
+    /// Hashes the input using the specified algorithm. Provides feedback on progress.
+    /// </summary>
+    /// <param name="input"></param>
+    /// <param name="progress"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public static async Task<string> MD5(Stream input, IProgress<HashingProgress> progress, CancellationToken cancellationToken)
     {
         using var md5 = System.Security.Cryptography.MD5.Create();
-        var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-        var hashBytes = md5.ComputeHash(inputBytes);
-        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-    }
+        var buffer = new byte[8192];
+        var bytesRead = 0;
+        var totalBytes = input.Length;
 
-    public static string SHA1(string input)
-    {
-        using var sha1 = System.Security.Cryptography.SHA1.Create();
-        var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-        var hashBytes = sha1.ComputeHash(inputBytes);
-        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-    }
-
-    public static string SHA256(string input)
-    {
-        using var sha256 = System.Security.Cryptography.SHA256.Create();
-        var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-        var hashBytes = sha256.ComputeHash(inputBytes);
-        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-    }
-
-    public static string SHA384(string input)
-    {
-        using var sha384 = System.Security.Cryptography.SHA384.Create();
-        var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-        var hashBytes = sha384.ComputeHash(inputBytes);
-        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-    }
-
-    public static string SHA512(string input)
-    {
-        using var sha512 = System.Security.Cryptography.SHA512.Create();
-        var inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-        var hashBytes = sha512.ComputeHash(inputBytes);
-        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+        while ((bytesRead = await input.ReadAsync(buffer, 0, buffer.Length, cancellationToken)) > 0)
+        {
+            md5.TransformBlock(buffer, 0, bytesRead, null, 0);
+            progress.Report(new HashingProgress { PercentageComplete = (float)input.Position / totalBytes });
+        }
+        md5.TransformFinalBlock(buffer, 0, 0);
+        return BitConverter.ToString(md5.Hash).Replace("-", "").ToLower();
     }
 }
