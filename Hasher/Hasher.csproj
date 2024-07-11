@@ -24,7 +24,7 @@
 		<ApplicationTitle>Hasher</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.hasher</ApplicationId>
+		<ApplicationId>com.larsjuvik.hasher</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
