@@ -15,6 +15,7 @@
                 SemanticProperties.Description="dot net bot in a race car number eight"/>
 
             <Label
+                x:Name="HashLabel"
                 Text="Hasher"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
