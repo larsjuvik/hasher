@@ -31,6 +31,12 @@
                 SemanticProperties.Hint="Selects a file from your filesystem"
                 Clicked="SelectFileButton_Clicked"
                 HorizontalOptions="Fill"/>
+
+            <ProgressBar
+                x:Name="ProgressBar"
+                Progress="0"
+                HeightRequest="10"
+                HorizontalOptions="Fill"/>
         </VerticalStackLayout>
     </ScrollView>
 
