@@ -1,4 +1,4 @@
-﻿namespace Hashing;
+﻿namespace Hasher;
 
 using System.IO;
 
