@@ -6,6 +6,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
+
+		HashAlgorithmPicker.SelectedIndex = 0;
 	}
 
 	private async void SelectFileButton_Clicked(object sender, EventArgs e)

@@ -25,13 +25,33 @@
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"/>
 
-            <Button
-                x:Name="SelectFileButton"
-                Text="Select file"
-                SemanticProperties.Hint="Selects a file from your filesystem"
-                Clicked="SelectFileButton_Clicked"
-                HorizontalOptions="Fill"/>
+            <Grid ColumnSpacing="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    x:Name="SelectFileButton"
+                    Text="Select file"
+                    SemanticProperties.Hint="Selects a file from your filesystem"
+                    Clicked="SelectFileButton_Clicked"/>
 
+                <Picker
+                    Grid.Column="1"
+                    x:Name="HashAlgorithmPicker"
+                    HorizontalOptions="FillAndExpand">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>MD5</x:String>
+                            <x:String>SHA-1 (not supported yet)</x:String>
+                            <x:String>SHA-256 (not supported yet)</x:String>
+                            <x:String>SHA-384 (not supported yet)</x:String>
+                            <x:String>SHA-512 (not supported yet)</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
             <ProgressBar
                 x:Name="ProgressBar"
                 Progress="0"
