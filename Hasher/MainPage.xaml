@@ -2,22 +2,20 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Hasher.MainPage"
+             WidthRequest="600"
+             HeightRequest="500"
              Shell.NavBarIsVisible="False">
 
     <ScrollView>
         <FlexLayout Direction="Column"
                     JustifyContent="Start"
                     AlignItems="Center"
-                    Padding="30,0">
+                    Margin="30,15">
             <!-- Header -->
-            <Label
-                Text="Hasher"
-                FontSize="40"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1"/>
             <Label
                 x:Name="HashLabel"
                 Text="Hasher"
+                FontSize="40"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
 
@@ -25,27 +23,48 @@
                         BackgroundColor="Gray"
                         Direction="Column"
                         JustifyContent="SpaceBetween">
-                <Label
-                    Text="Click the button below to select a file for hashing"
-                    Style="{StaticResource SubHeadline}"
-                    SemanticProperties.HeadingLevel="Level2"
-                    FlexLayout.Basis="20"/>
-
                 <Grid FlexLayout.Grow="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Button
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label
                         Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Select file"
+                        FontSize="20"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource Headline}"
+                        SemanticProperties.HeadingLevel="Level2"/>
+
+                    <Button
+                        Grid.Column="1"
+                        Grid.Row="0"
                         x:Name="SelectFileButton"
                         Text="Select file"
                         SemanticProperties.Hint="Selects a file from your filesystem"
                         Clicked="SelectFileButton_Clicked"
                         MaximumHeightRequest="70"/>
 
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start"
+                        FontSize="20"
+                        Text="Select algorithm"
+                        Style="{StaticResource Headline}"
+                        SemanticProperties.HeadingLevel="Level2"/>
+
                     <Picker
                         Grid.Column="1"
+                        Grid.Row="1"
                         MaximumHeightRequest="70"
                         x:Name="HashAlgorithmPicker"
                         HorizontalOptions="FillAndExpand">
