@@ -26,11 +26,11 @@ public partial class MainPage : ContentPage
 			var hash = await Hasher.HashService.MD5(fileStream, progress, CancellationToken.None);
 
 			// Display the hash
-			HashLabel.Text = hash;
+			HashEntry.Text = hash;
 		}
 		else
 		{
-			HashLabel.Text = "No file selected";
+			HashEntry.Text = "No file selected";
 		}
 	}
 }

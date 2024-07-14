@@ -2,102 +2,116 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Hasher.MainPage"
-             WidthRequest="600"
+             WidthRequest="550"
              HeightRequest="500"
              Shell.NavBarIsVisible="False">
 
     <ScrollView>
-        <FlexLayout Direction="Column"
-                    JustifyContent="Start"
-                    AlignItems="Center"
-                    Margin="30,15">
+        <VerticalStackLayout
+            Spacing="50"
+            Margin="30,15">
             <!-- Header -->
             <Label
-                x:Name="HashLabel"
                 Text="Hasher"
                 FontSize="40"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
 
-            <FlexLayout FlexLayout.Grow="1"
-                        Direction="Column"
-                        JustifyContent="SpaceBetween">
-                <Grid FlexLayout.Grow="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+            <Grid FlexLayout.Grow="1"
+                  RowSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        Text="Select file"
-                        FontSize="20"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Start"
-                        Style="{StaticResource Headline}"
-                        SemanticProperties.HeadingLevel="Level2"/>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Select file"
+                    FontSize="20"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level2"/>
 
-                    <Button
-                        Grid.Column="1"
-                        Grid.Row="0"
-                        x:Name="SelectFileButton"
-                        Text="Select file"
-                        SemanticProperties.Hint="Selects a file from your filesystem"
-                        Clicked="SelectFileButton_Clicked"
-                        MaximumHeightRequest="70"/>
+                <Button
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    x:Name="SelectFileButton"
+                    Text="Select file"
+                    SemanticProperties.Hint="Selects a file from your filesystem"
+                    Clicked="SelectFileButton_Clicked"
+                    MaximumHeightRequest="50"/>
 
-                    <Label
-                        Grid.Column="0"
-                        Grid.Row="1"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Start"
-                        FontSize="20"
-                        Text="Select algorithm"
-                        Style="{StaticResource Headline}"
-                        SemanticProperties.HeadingLevel="Level2"/>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    FontSize="20"
+                    Text="Select algorithm"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level2"/>
 
-                    <Picker
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        MaximumHeightRequest="70"
-                        x:Name="HashAlgorithmPicker"
-                        HorizontalOptions="FillAndExpand">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>MD5</x:String>
-                                <x:String>SHA-1 (not supported yet)</x:String>
-                                <x:String>SHA-256 (not supported yet)</x:String>
-                                <x:String>SHA-384 (not supported yet)</x:String>
-                                <x:String>SHA-512 (not supported yet)</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-
-                    <Button
-                        Grid.ColumnSpan="2"
-                        Grid.Row="2"
-                        Text="Start hashing"
-                        SemanticProperties.Hint="Selects a file from your filesystem"
-                        MaximumHeightRequest="70"/>
-                </Grid>
+                <Picker
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    MaximumHeightRequest="50"
+                    x:Name="HashAlgorithmPicker"
+                    HorizontalOptions="FillAndExpand">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>MD5</x:String>
+                            <x:String>SHA-1 (not supported yet)</x:String>
+                            <x:String>SHA-256 (not supported yet)</x:String>
+                            <x:String>SHA-384 (not supported yet)</x:String>
+                            <x:String>SHA-512 (not supported yet)</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
 
 
-            </FlexLayout>
+            <VerticalStackLayout
+                Spacing="10">
+                <Button
+                    MaximumHeightRequest="50"
+                    Text="Start hashing"
+                    SemanticProperties.Hint="Selects a file from your filesystem"/>
+                <!-- Footer -->
+                <ProgressBar
+                    x:Name="ProgressBar"
+                    VerticalOptions="End"
+                    Progress="0"
+                    IsVisible="True"
+                    HeightRequest="20"
+                    HorizontalOptions="Fill"/>
+            </VerticalStackLayout>
 
-            <!-- Footer -->
-            <ProgressBar
-                x:Name="ProgressBar"
-                VerticalOptions="End"
-                Progress="0"
-                HeightRequest="20"
-                HorizontalOptions="Fill"/>
-        </FlexLayout>
+            <VerticalStackLayout
+                Spacing="5">
+                <Label
+                    Text="Hash"
+                    FontSize="20"
+                    Style="{StaticResource Headline}"
+                    SemanticProperties.HeadingLevel="Level1"/>
+                <Entry
+                    x:Name="HashEntry"
+                    Text="Test"
+                    IsReadOnly="True"
+                    FontSize="20"
+                    Placeholder="Hash will be displayed here"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    MaximumHeightRequest="50"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>
