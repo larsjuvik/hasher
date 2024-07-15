@@ -5,13 +5,13 @@ using CommunityToolkit.Mvvm.ComponentModel;
 public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string selectedFileName;
+    private string selectedFileName = string.Empty;
 
     [ObservableProperty]
-    private string hashAlgorithm;
+    private string hashAlgorithm = string.Empty;
 
     [ObservableProperty]
-    private string hash;
+    private string hash = string.Empty;
 
     [ObservableProperty]
     private bool hasSelectedFile;
