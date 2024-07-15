@@ -23,13 +23,17 @@ public partial class MainPage : ContentPage
 		{
 			_viewModel.SelectedFilePath = filePickerResult.FullPath;
 			_viewModel.HasSelectedFile = true;
+
+			_viewModel.ErrorMessage = string.Empty;
+			_viewModel.HasErrorMessage = false;
 		}
 		else
 		{
-			_viewModel.ErrorMessage = "No file selected";
-			_viewModel.HasErrorMessage = true;
-			_viewModel.SelectedFilePath = "";
+			_viewModel.SelectedFilePath = string.Empty;
 			_viewModel.HasSelectedFile = false;
+
+			_viewModel.ErrorMessage = "No valid file selected";
+			_viewModel.HasErrorMessage = true;
 		}
 	}
 }
