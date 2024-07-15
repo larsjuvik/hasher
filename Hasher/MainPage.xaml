@@ -68,18 +68,10 @@
                     Grid.Column="1"
                     Grid.Row="1"
                     MaximumHeightRequest="50"
+                    ItemsSource="{Binding HashAlgorithms}"
+                    SelectedItem="{Binding SelectedHashAlgorithm}"
                     x:Name="HashAlgorithmPicker"
-                    HorizontalOptions="FillAndExpand">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>MD5</x:String>
-                            <x:String>SHA-1 (not supported yet)</x:String>
-                            <x:String>SHA-256 (not supported yet)</x:String>
-                            <x:String>SHA-384 (not supported yet)</x:String>
-                            <x:String>SHA-512 (not supported yet)</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                    HorizontalOptions="FillAndExpand"/>
             </Grid>
 
             <!-- Action buttons and progress bar -->

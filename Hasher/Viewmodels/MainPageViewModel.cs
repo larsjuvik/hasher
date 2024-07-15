@@ -16,4 +16,9 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private bool hasSelectedFile;
 
+    [ObservableProperty]
+    private string[] hashAlgorithms = HashService.HashAlgorithms;
+
+    [ObservableProperty]
+    private string selectedHashAlgorithm = HashService.HashAlgorithms[0];
 }
