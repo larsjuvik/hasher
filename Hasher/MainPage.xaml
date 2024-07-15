@@ -4,11 +4,20 @@
              x:Class="Hasher.MainPage"
              xmlns:local="clr-namespace:Hasher.Viewmodels"
              WidthRequest="550"
-             HeightRequest="550"
+             HeightRequest="500"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:IsStringNullOrEmptyConverter x:Key="IsStringNullOrEmptyConverter"
+                                                  x:Name="IsStringNullOrEmptyConverter"/>
+            <toolkit:IsStringNotNullOrEmptyConverter x:Key="IsStringNotNullOrEmptyConverter"
+                                                     x:Name="IsStringNotNullOrEmptyConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout
@@ -87,24 +96,21 @@
                     x:Name="ProgressBar"
                     VerticalOptions="End"
                     Progress="0"
-                    IsVisible="True"
+                    IsVisible="{Binding Hash, Converter={StaticResource IsStringNullOrEmptyConverter}}"
                     HeightRequest="20"
                     HorizontalOptions="Fill"/>
-            </VerticalStackLayout>
 
-            <VerticalStackLayout
-                Spacing="5">
                 <Entry
                     Text="{Binding Hash}"
                     IsEnabled="False"
                     IsReadOnly="True"
+                    IsVisible="{Binding Hash, Converter={StaticResource IsStringNotNullOrEmptyConverter}}"
                     FontSize="20"
                     Placeholder="Hash will be displayed here"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
                     MaximumHeightRequest="50"/>
             </VerticalStackLayout>
-
         </VerticalStackLayout>
     </ScrollView>
 

@@ -1,6 +1,7 @@
 namespace Hasher.Viewmodels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 public partial class MainPageViewModel : ObservableObject
 {
@@ -8,10 +9,10 @@ public partial class MainPageViewModel : ObservableObject
     private string selectedFilePath = "No file selected";
 
     [ObservableProperty]
-    private string hashAlgorithm = string.Empty;
+    private string hash = null;
 
     [ObservableProperty]
-    private string hash = string.Empty;
+    private bool isHashing = false;
 
     [ObservableProperty]
     private bool hasSelectedFile;
@@ -22,9 +23,9 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private string selectedHashAlgorithm = HashService.HashAlgorithms[0];
 
-    [ObservableProperty]
-    private string errorMessage = string.Empty;
-
-    [ObservableProperty]
-    private bool hasErrorMessage = false;
+    [RelayCommand]
+    private async Task StartHashing()
+    {
+        throw new NotImplementedException();
+    }
 }
