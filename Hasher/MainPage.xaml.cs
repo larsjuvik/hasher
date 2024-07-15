@@ -23,6 +23,7 @@ public partial class MainPage : ContentPage
 		{
 			_viewModel.SelectedFilePath = filePickerResult.FullPath;
 			_viewModel.HasSelectedFile = true;
+			_viewModel.FilePickerResult = filePickerResult;
 		}
 		else
 		{

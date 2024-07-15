@@ -88,6 +88,7 @@
                 Spacing="10">
                 <Button
                     IsEnabled="{Binding HasSelectedFile}"
+                    Command="{Binding StartHashingCommand}"
                     MaximumHeightRequest="50"
                     Text="Start hashing"
                     SemanticProperties.Hint="Starts hashing the selected file"/>
@@ -95,7 +96,7 @@
                 <ProgressBar
                     x:Name="ProgressBar"
                     VerticalOptions="End"
-                    Progress="0"
+                    Progress="{Binding HashingProgress}"
                     IsVisible="{Binding Hash, Converter={StaticResource IsStringNullOrEmptyConverter}}"
                     HeightRequest="20"
                     HorizontalOptions="Fill"/>

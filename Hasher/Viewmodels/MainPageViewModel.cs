@@ -2,6 +2,7 @@ namespace Hasher.Viewmodels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Hasher;
 
 public partial class MainPageViewModel : ObservableObject
 {
@@ -9,10 +10,10 @@ public partial class MainPageViewModel : ObservableObject
     private string selectedFilePath = "No file selected";
 
     [ObservableProperty]
-    private string hash = null;
+    private FileResult? filePickerResult;
 
     [ObservableProperty]
-    private bool isHashing = false;
+    private string hash = null;
 
     [ObservableProperty]
     private bool hasSelectedFile;
@@ -23,9 +24,31 @@ public partial class MainPageViewModel : ObservableObject
     [ObservableProperty]
     private string selectedHashAlgorithm = HashService.HashAlgorithms[0];
 
+    [ObservableProperty]
+    private float hashingProgress = 0.0f;
+
     [RelayCommand]
     private async Task StartHashing()
     {
-        throw new NotImplementedException();
+        var cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = cancellationTokenSource.Token;
+
+        var progress = new Progress<HashingProgress>(p =>
+        {
+            HashingProgress = p.PercentageComplete;
+        });
+
+        var fileStream = await filePickerResult.OpenReadAsync();
+        if (HasSelectedFile && filePickerResult != null)
+        {
+            switch (SelectedHashAlgorithm)
+            {
+                case "MD5":
+                    Hash = await HashService.MD5(fileStream, progress, cancellationToken);
+                    break;
+                default:
+                    return;
+            }
+        }
     }
 }
