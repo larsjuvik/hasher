@@ -108,8 +108,8 @@
                     Style="{StaticResource Headline}"
                     SemanticProperties.HeadingLevel="Level2"/>
                 <Entry
-                    x:Name="HashEntry"
-                    Text="Test"
+                    Text="{Binding Hash}"
+                    IsEnabled="False"
                     IsReadOnly="True"
                     FontSize="20"
                     Placeholder="Hash will be displayed here"
