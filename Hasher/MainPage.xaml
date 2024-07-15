@@ -104,16 +104,27 @@
                     HeightRequest="20"
                     HorizontalOptions="Fill"/>
 
-                <Entry
-                    Text="{Binding Hash}"
-                    IsEnabled="False"
-                    IsReadOnly="True"
-                    IsVisible="{Binding Hash, Converter={StaticResource IsStringNotNullOrEmptyConverter}}"
-                    FontSize="20"
-                    Placeholder="Hash will be displayed here"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand"
-                    MaximumHeightRequest="50"/>
+                <Grid IsVisible="{Binding Hash, Converter={StaticResource IsStringNotNullOrEmptyConverter}}"
+                      HorizontalOptions="FillAndExpand"
+                      ColumnSpacing="10"
+                      VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry
+                        Grid.Column="0"
+                        Text="{Binding Hash}"
+                        IsEnabled="True"
+                        IsReadOnly="True"
+                        FontSize="20"
+                        Placeholder="Hash will be displayed here"
+                        MaximumHeightRequest="50"/>
+                    <Button Text="Copy"
+                            Grid.Column="1"
+                            Clicked="CopyHashButton_Clicked"/>
+                </Grid>
+
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

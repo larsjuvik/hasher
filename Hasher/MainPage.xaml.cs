@@ -13,6 +13,11 @@ public partial class MainPage : ContentPage
 		HashAlgorithmPicker.SelectedIndex = 0;
 	}
 
+	private async void CopyHashButton_Clicked(object sender, EventArgs e)
+	{
+		await Clipboard.SetTextAsync(_viewModel.Hash);
+	}
+
 	private async void SelectFileButton_Clicked(object sender, EventArgs e)
 	{
 		// Open file picker
