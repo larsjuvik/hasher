@@ -12,4 +12,8 @@ public partial class MainPageViewModel : ObservableObject
 
     [ObservableProperty]
     private string hash;
+
+    [ObservableProperty]
+    private bool hasSelectedFile;
+
 }

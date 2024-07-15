@@ -14,6 +14,7 @@
         <VerticalStackLayout
             Spacing="50"
             Margin="30,15">
+
             <!-- Header -->
             <Label
                 Text="{Binding SelectedFileName}"
@@ -21,6 +22,7 @@
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
 
+            <!-- Input fields -->
             <Grid FlexLayout.Grow="1"
                   RowSpacing="10">
                 <Grid.ColumnDefinitions>
@@ -80,14 +82,15 @@
                 </Picker>
             </Grid>
 
-
+            <!-- Action buttons and progress bar -->
             <VerticalStackLayout
                 Spacing="10">
                 <Button
+                    IsEnabled="{Binding HasSelectedFile}"
                     MaximumHeightRequest="50"
                     Text="Start hashing"
-                    SemanticProperties.Hint="Selects a file from your filesystem"/>
-                <!-- Footer -->
+                    SemanticProperties.Hint="Starts hashing the selected file"/>
+
                 <ProgressBar
                     x:Name="ProgressBar"
                     VerticalOptions="End"
@@ -103,7 +106,7 @@
                     Text="Hash"
                     FontSize="20"
                     Style="{StaticResource Headline}"
-                    SemanticProperties.HeadingLevel="Level1"/>
+                    SemanticProperties.HeadingLevel="Level2"/>
                 <Entry
                     x:Name="HashEntry"
                     Text="Test"

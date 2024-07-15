@@ -22,6 +22,7 @@ public partial class MainPage : ContentPage
 		if (filePickerResult != null)
 		{
 			_viewModel.SelectedFileName = filePickerResult.FileName;
+			_viewModel.HasSelectedFile = true;
 		}
 		else
 		{
