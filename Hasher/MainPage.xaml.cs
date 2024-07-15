@@ -21,12 +21,15 @@ public partial class MainPage : ContentPage
 		// Create a file stream from result
 		if (filePickerResult != null)
 		{
-			_viewModel.SelectedFileName = filePickerResult.FileName;
+			_viewModel.SelectedFilePath = filePickerResult.FullPath;
 			_viewModel.HasSelectedFile = true;
 		}
 		else
 		{
-			_viewModel.SelectedFileName = "No file selected";
+			_viewModel.ErrorMessage = "No file selected";
+			_viewModel.HasErrorMessage = true;
+			_viewModel.SelectedFilePath = "";
+			_viewModel.HasSelectedFile = false;
 		}
 	}
 }

@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string selectedFileName = string.Empty;
+    private string selectedFilePath = string.Empty;
 
     [ObservableProperty]
     private string hashAlgorithm = string.Empty;
@@ -21,4 +21,10 @@ public partial class MainPageViewModel : ObservableObject
 
     [ObservableProperty]
     private string selectedHashAlgorithm = HashService.HashAlgorithms[0];
+
+    [ObservableProperty]
+    private string errorMessage = string.Empty;
+
+    [ObservableProperty]
+    private bool hasErrorMessage = false;
 }
