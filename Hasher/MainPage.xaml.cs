@@ -1,12 +1,15 @@
-﻿namespace Hasher;
+﻿using Hasher.Viewmodels;
+
+namespace Hasher;
 
 public partial class MainPage : ContentPage
 {
+	private MainPageViewModel _viewModel => (MainPageViewModel)BindingContext;
+
 
 	public MainPage()
 	{
 		InitializeComponent();
-
 		HashAlgorithmPicker.SelectedIndex = 0;
 	}
 
@@ -18,19 +21,11 @@ public partial class MainPage : ContentPage
 		// Create a file stream from result
 		if (filePickerResult != null)
 		{
-			var fileStream = await filePickerResult.OpenReadAsync();
-
-			// Create a hash from the file stream
-			var progress = new Progress<HashingProgress>();
-			progress.ProgressChanged += (sender, e) => ProgressBar.Progress = e.PercentageComplete;
-			var hash = await Hasher.HashService.MD5(fileStream, progress, CancellationToken.None);
-
-			// Display the hash
-			HashEntry.Text = hash;
+			_viewModel.SelectedFileName = filePickerResult.FileName;
 		}
 		else
 		{
-			HashEntry.Text = "No file selected";
+			_viewModel.SelectedFileName = "No file selected";
 		}
 	}
 }
