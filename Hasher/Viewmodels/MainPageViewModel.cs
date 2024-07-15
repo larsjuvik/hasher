@@ -13,7 +13,7 @@ public partial class MainPageViewModel : ObservableObject
     private FileResult? filePickerResult;
 
     [ObservableProperty]
-    private string hash = null;
+    private string? hash = null;
 
     [ObservableProperty]
     private bool hasSelectedFile;
@@ -30,6 +30,11 @@ public partial class MainPageViewModel : ObservableObject
     [RelayCommand]
     private async Task StartHashing()
     {
+        if (!HasSelectedFile || FilePickerResult == null)
+        {
+            return;
+        }
+
         var cancellationTokenSource = new CancellationTokenSource();
         var cancellationToken = cancellationTokenSource.Token;
 
@@ -38,17 +43,15 @@ public partial class MainPageViewModel : ObservableObject
             HashingProgress = p.PercentageComplete;
         });
 
-        var fileStream = await filePickerResult.OpenReadAsync();
-        if (HasSelectedFile && filePickerResult != null)
+        var fileStream = await FilePickerResult.OpenReadAsync();
+        switch (SelectedHashAlgorithm)
         {
-            switch (SelectedHashAlgorithm)
-            {
-                case "MD5":
-                    Hash = await HashService.MD5(fileStream, progress, cancellationToken);
-                    break;
-                default:
-                    return;
-            }
+            case "MD5":
+                Hash = await HashService.MD5(fileStream, progress, cancellationToken);
+                break;
+            default:
+                return;
         }
+
     }
 }
