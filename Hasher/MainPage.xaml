@@ -107,12 +107,18 @@
                 <Grid IsVisible="{Binding Hash, Converter={StaticResource IsStringNotNullOrEmptyConverter}}"
                       HorizontalOptions="FillAndExpand"
                       ColumnSpacing="10"
+                      RowSpacing="10"
                       VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Entry
+                        Grid.Row="0"
                         Grid.Column="0"
                         Text="{Binding Hash}"
                         IsEnabled="True"
@@ -121,6 +127,21 @@
                         Placeholder="Hash will be displayed here"
                         MaximumHeightRequest="50"/>
                     <Button Text="Copy"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Clicked="CopyHashButton_Clicked"/>
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text=""
+                        IsEnabled="True"
+                        IsReadOnly="False"
+                        FontSize="20"
+                        Placeholder="Input hash you want to verify here"
+                        MaximumHeightRequest="50"/>
+                    <Button Text="Verify"
+                            Grid.Row="1"
+                            BackgroundColor="Green"
                             Grid.Column="1"
                             Clicked="CopyHashButton_Clicked"/>
                 </Grid>
