@@ -1,6 +1,7 @@
-﻿namespace Hasher;
+﻿namespace Hasher.Services;
 
 using System.IO;
+using Hasher.Services.Models;
 
 public static class HashService
 {
