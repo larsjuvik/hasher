@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string selectedFilePath = string.Empty;
+    private string selectedFilePath = "No file selected";
 
     [ObservableProperty]
     private string hashAlgorithm = string.Empty;

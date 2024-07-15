@@ -4,7 +4,7 @@
              x:Class="Hasher.MainPage"
              xmlns:local="clr-namespace:Hasher.Viewmodels"
              WidthRequest="550"
-             HeightRequest="500"
+             HeightRequest="550"
              Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
         <local:MainPageViewModel/>
@@ -21,16 +21,6 @@
                 FontSize="40"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
-
-            <!-- Error messages -->
-            <Label
-                x:Name="ErrorMessageLabel"
-                IsVisible="{Binding HasErrorMessage}"
-                Text="{Binding ErrorMessage}"
-                TextColor="Red"
-                HorizontalOptions="Center"
-                FontSize="15"
-                SemanticProperties.HeadingLevel="Level2"/>
 
             <!-- Input fields -->
             <Grid FlexLayout.Grow="1"
@@ -59,7 +49,7 @@
                     Grid.Column="1"
                     Grid.Row="0"
                     x:Name="SelectFileButton"
-                    Text="Select file"
+                    Text="{Binding SelectedFilePath}"
                     SemanticProperties.Hint="Selects a file from your filesystem"
                     Clicked="SelectFileButton_Clicked"
                     MaximumHeightRequest="50"/>
