@@ -17,7 +17,7 @@
 
             <!-- Header -->
             <Label
-                Text="{Binding SelectedFileName}"
+                Text="Hasher"
                 FontSize="40"
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1"/>
