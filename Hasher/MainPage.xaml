@@ -21,10 +21,11 @@
 
     <ScrollView VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand">
-        <VerticalStackLayout
+        <FlexLayout
             VerticalOptions="FillAndExpand"
             HorizontalOptions="FillAndExpand"
-            Spacing="50"
+            JustifyContent="SpaceBetween"
+            Direction="Column"
             Margin="30,15">
 
             <!-- Header -->
@@ -35,8 +36,8 @@
                 SemanticProperties.HeadingLevel="Level1"/>
 
             <!-- Input fields -->
-            <Grid FlexLayout.Grow="1"
-                  RowSpacing="10">
+            <Grid RowSpacing="10"
+                  Padding="0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
@@ -147,7 +148,7 @@
                 </Grid>
 
             </VerticalStackLayout>
-        </VerticalStackLayout>
+        </FlexLayout>
     </ScrollView>
 
 </ContentPage>
