@@ -29,11 +29,11 @@
             Margin="30,15">
 
             <!-- Header -->
-            <Label
-                Text="Hasher"
-                FontSize="40"
-                Style="{StaticResource Headline}"
-                SemanticProperties.HeadingLevel="Level1"/>
+            <Image
+                Source="logo.png"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
 
             <!-- Input fields -->
             <Grid RowSpacing="10"
