@@ -36,5 +36,16 @@ public partial class MainPage : ContentPage
 			_viewModel.HasSelectedFile = false;
 		}
 	}
+
+	private async void VerifyHashButton_Clicked(object sender, EventArgs e)
+	{
+		if (_viewModel.Hash == null)
+		{
+			return;
+		}
+
+		var result = _viewModel.Hash == HashToVerifyEntry.Text;
+		await DisplayAlert("Hash Verification", result ? "Hashes match!" : "Hashes do not match!", "OK");
+	}
 }
 

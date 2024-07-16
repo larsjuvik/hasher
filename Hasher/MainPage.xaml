@@ -132,6 +132,7 @@
                             Grid.Column="1"
                             Clicked="CopyHashButton_Clicked"/>
                     <Entry
+                        x:Name="HashToVerifyEntry"
                         Grid.Column="0"
                         Grid.Row="1"
                         Text=""
@@ -141,10 +142,10 @@
                         Placeholder="Input hash you want to verify here"
                         MaximumHeightRequest="50"/>
                     <Button Text="Verify"
+                            Clicked="VerifyHashButton_Clicked"
                             Grid.Row="1"
                             BackgroundColor="Green"
-                            Grid.Column="1"
-                            Clicked="CopyHashButton_Clicked"/>
+                            Grid.Column="1"/>
                 </Grid>
 
             </VerticalStackLayout>
