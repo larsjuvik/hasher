@@ -20,10 +20,10 @@ public partial class MainPageViewModel : ObservableObject
     private bool hasSelectedFile;
 
     [ObservableProperty]
-    private string[] hashAlgorithms = HashService.HashAlgorithms;
+    private string[] hashAlgorithms = HashService.AvailableHashAlgorithms;
 
     [ObservableProperty]
-    private string selectedHashAlgorithm = HashService.HashAlgorithms[0];
+    private string selectedHashAlgorithm = HashService.AvailableHashAlgorithms[0];
 
     [ObservableProperty]
     private float hashingProgress = 0.0f;
