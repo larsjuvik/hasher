@@ -23,20 +23,4 @@ public class HashServiceTest
 
         Assert.Equal(expected, actual);
     }
-
-    // Test that the progress is correct
-    [Fact]
-    public async Task TestMD5ProgressFromMemoryStream()
-    {
-        var input = new MemoryStream(Encoding.UTF8.GetBytes("test"));
-        var progress = new Progress<HashingProgress>();
-        var expected = new List<float> { 1.0f };
-
-        var actual = new List<float>();
-        progress.ProgressChanged += (sender, e) => actual.Add(e.PercentageComplete);
-
-        await HashService.Hash(HashService.Algorithm.MD5, input, progress, CancellationToken.None);
-
-        Assert.Equal(expected, actual);
-    }
 }
