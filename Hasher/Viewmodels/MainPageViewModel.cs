@@ -48,7 +48,7 @@ public partial class MainPageViewModel : ObservableObject
         switch (SelectedHashAlgorithm)
         {
             case "MD5":
-                Hash = await HashService.Hash(HashService.HashAlgorithms.MD5, fileStream, progress, cancellationToken);
+                Hash = await HashService.Hash(HashService.Algorithm.MD5, fileStream, progress, cancellationToken);
                 break;
             default:
                 return;

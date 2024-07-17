@@ -6,12 +6,12 @@ using System.Security.Cryptography;
 
 public static class HashService
 {
-    public enum HashAlgorithms
+    public enum Algorithm
     {
         MD5
     }
 
-    public static string[] AvailableHashAlgorithms { get => Enum.GetNames(typeof(HashAlgorithms)); }
+    public static string[] AvailableHashAlgorithms { get => Enum.GetNames(typeof(Algorithm)); }
 
     /// <summary>
     /// Hashes the input using the specified algorithm. Provides feedback on progress.
@@ -20,7 +20,7 @@ public static class HashService
     /// <param name="progress"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    public static async Task<string> Hash(HashAlgorithms alg, Stream input, IProgress<HashingProgress> progress, CancellationToken cancellationToken)
+    public static async Task<string> Hash(Algorithm alg, Stream input, IProgress<HashingProgress> progress, CancellationToken cancellationToken)
     {
         using var hashAlgorithm = GetHashAlgorithm(alg);
         var buffer = new byte[8192];
@@ -36,11 +36,11 @@ public static class HashService
         return BitConverter.ToString(hashAlgorithm.Hash).Replace("-", "").ToLower();
     }
 
-    private static HashAlgorithm GetHashAlgorithm(HashAlgorithms alg)
+    private static HashAlgorithm GetHashAlgorithm(Algorithm alg)
     {
         return alg switch
         {
-            HashAlgorithms.MD5 => System.Security.Cryptography.MD5.Create(),
+            Algorithm.MD5 => System.Security.Cryptography.MD5.Create(),
             _ => throw new NotImplementedException()
         };
     }
