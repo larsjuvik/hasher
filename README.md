@@ -5,4 +5,6 @@
 
 A simple-to-use application for verifying hashes of files. Made with .NET MAUI.
 
-![An image of the application](docs/res/Application_Screenshot.png)
+<p align="center">
+  <img src="docs/res/Application_Screenshot.png" />
+</p>
