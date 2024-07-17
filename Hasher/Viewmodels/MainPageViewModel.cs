@@ -2,8 +2,8 @@ namespace Hasher.Viewmodels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Hasher.Services;
-using Hasher.Services.Models;
+using Services;
+using Services.Models;
 
 public partial class MainPageViewModel : ObservableObject
 {

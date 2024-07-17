@@ -1,7 +1,7 @@
-﻿namespace Hasher.Services;
+﻿namespace Services;
 
 using System.IO;
-using Hasher.Services.Models;
+using Services.Models;
 using System.Security.Cryptography;
 
 public static class HashService

@@ -1,8 +1,8 @@
 using System.Text;
-using Hasher.Services;
-using Hasher.Services.Models;
+using Services;
+using Services.Models;
 
-namespace Hasher.Tests;
+namespace Tests;
 
 public class HashServiceTest
 {

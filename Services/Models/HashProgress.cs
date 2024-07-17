@@ -1,4 +1,4 @@
-namespace Hasher.Services.Models;
+namespace Services.Models;
 
 public class HashingProgress
 {
