@@ -16,13 +16,15 @@ public static class HashService
     /// <summary>
     /// Hashes the input using the specified algorithm. Provides feedback on progress.
     /// </summary>
-    /// <param name="input"></param>
-    /// <param name="progress"></param>
-    /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    public static async Task<string> Hash(Algorithm alg, Stream input, IProgress<HashingProgress> progress, CancellationToken cancellationToken)
+    /// <param name="algorithm">The algorithm to use for hashing</param>
+    /// <param name="input">The input to the hasher</param>
+    /// <param name="progress">A progress reporter</param>
+    /// <param name="cancellationToken">A cancellation token</param>
+    /// <returns>The hash of the input</returns>
+    /// <exception cref="Exception">Thrown when an invalid algorithm is specified</exception>
+    public static async Task<string> Hash(Algorithm algorithm, Stream input, IProgress<HashingProgress> progress, CancellationToken cancellationToken)
     {
-        using var hashAlgorithm = GetHashAlgorithm(alg);
+        using var hashAlgorithm = GetHashAlgorithm(algorithm);
         var buffer = new byte[8192];
         var bytesRead = 0;
         var totalBytes = input.Length;
@@ -36,12 +38,12 @@ public static class HashService
         return BitConverter.ToString(hashAlgorithm.Hash).Replace("-", "").ToLower();
     }
 
-    private static HashAlgorithm GetHashAlgorithm(Algorithm alg)
+    private static HashAlgorithm GetHashAlgorithm(Algorithm algorithm)
     {
-        return alg switch
+        return algorithm switch
         {
             Algorithm.MD5 => System.Security.Cryptography.MD5.Create(),
-            _ => throw new NotImplementedException()
+            _ => throw new Exception("Invalid algorithm")
         };
     }
 }
