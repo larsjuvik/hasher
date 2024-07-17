@@ -45,14 +45,14 @@ public partial class MainPageViewModel : ObservableObject
         });
 
         var fileStream = await FilePickerResult.OpenReadAsync();
-        switch (SelectedHashAlgorithm)
+
+        // Convert chosen algorithm to enum
+        var successParseAlgorithm = Enum.TryParse<HashService.Algorithm>(SelectedHashAlgorithm, false, out var algorithm);
+        if (!successParseAlgorithm)
         {
-            case "MD5":
-                Hash = await HashService.Hash(HashService.Algorithm.MD5, fileStream, progress, cancellationToken);
-                break;
-            default:
-                return;
+            return;
         }
 
+        Hash = await HashService.Hash(algorithm, fileStream, progress, cancellationToken);
     }
 }
