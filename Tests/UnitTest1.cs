@@ -1,6 +1,8 @@
 using System.Text;
+using Hasher.Services;
+using Hasher.Services.Models;
 
-namespace Tests;
+namespace Hasher.Tests;
 
 public class HashServiceTest
 {
@@ -12,7 +14,7 @@ public class HashServiceTest
         var expected = "098f6bcd4621d373cade4e832627b4f6";
         var progress = new Progress<HashingProgress>();
 
-        var actual = await Hasher.HashService.MD5(input, progress, CancellationToken.None);
+        var actual = await HashService.MD5(input, progress, CancellationToken.None);
 
         Assert.Equal(expected, actual);
     }
@@ -28,7 +30,7 @@ public class HashServiceTest
         var actual = new List<float>();
         progress.ProgressChanged += (sender, e) => actual.Add(e.PercentageComplete);
 
-        await Hasher.HashService.MD5(input, progress, CancellationToken.None);
+        await HashService.MD5(input, progress, CancellationToken.None);
 
         Assert.Equal(expected, actual);
     }
