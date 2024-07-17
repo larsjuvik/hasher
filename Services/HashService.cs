@@ -8,7 +8,12 @@ public static class HashService
 {
     public enum Algorithm
     {
-        MD5
+        MD5,
+
+        SHA1,
+        SHA256,
+        SHA384,
+        SHA512
     }
 
     public static string[] AvailableHashAlgorithms { get => Enum.GetNames(typeof(Algorithm)); }
@@ -43,6 +48,10 @@ public static class HashService
         return algorithm switch
         {
             Algorithm.MD5 => System.Security.Cryptography.MD5.Create(),
+            Algorithm.SHA1 => System.Security.Cryptography.SHA1.Create(),
+            Algorithm.SHA256 => System.Security.Cryptography.SHA256.Create(),
+            Algorithm.SHA384 => System.Security.Cryptography.SHA384.Create(),
+            Algorithm.SHA512 => System.Security.Cryptography.SHA512.Create(),
             _ => throw new Exception("Invalid algorithm")
         };
     }
