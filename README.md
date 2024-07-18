@@ -5,7 +5,7 @@
 
 **This project is still in a very early alpha - expect the software to have errors.**
 
-A simple-to-use application for verifying hashes of files. Made with .NET MAUI.
+A simple-to-use application for verifying hashes of files, free for everyone. Made with .NET MAUI.
 
 <p align="center">
   <img src="docs/res/Application_Screenshot.png" />
