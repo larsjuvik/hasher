@@ -11,12 +11,13 @@ A simple-to-use application for verifying hashes of files. Made with .NET MAUI.
   <img src="docs/res/Application_Screenshot.png" />
 </p>
 
-## Todo
+## Remaining work
 
 This application is not done yet, and there is several things that needs implementation.
 
 1. More test-cases of the hashing computations, and more testing of the application itself.
 2. Make the "Copy" and "Verify" buttons nicer. Right now their color scheme is a bit confusing.
 3. Add an app logo, s.t. it shows a different logo than the purple ".NET" in the dock.
-4. CI/CD pipeline
-5. (Nice to have) Animation when progressbar shows / verify field shows
+4. CI/CD pipeline.
+5. Testing on Windows. Has only been tested on macOS so far.
+6. (Nice to have) Fade-animation when progressbar shows / verify field shows.
