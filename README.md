@@ -29,3 +29,4 @@ This application is not done yet, and there is several things that needs impleme
 4. CI/CD pipeline.
 5. Testing on Windows. Has only been tested on macOS so far.
 6. (Nice to have) Fade-animation when progressbar shows / verify field shows.
+7. Add build instructions
