@@ -11,6 +11,14 @@ A simple-to-use application for verifying hashes of files, free for everyone. Ma
   <img src="docs/res/Application_Screenshot.png" />
 </p>
 
+## Supported algorithms
+
+- MD5
+- SHA1
+- SHA256
+- SHA384
+- SHA512
+
 ## Remaining work
 
 This application is not done yet, and there is several things that needs implementation.
