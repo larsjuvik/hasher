@@ -38,3 +38,4 @@ This application is not done yet, and there is several things that needs impleme
 4. CI/CD pipeline.
 5. Testing on Windows. Has only been tested on macOS so far.
 6. Add build instructions for Windows
+7. Add console application for hasher
