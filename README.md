@@ -5,11 +5,20 @@
 
 **This project is still in a very early alpha - expect the software to have errors.**
 
-A simple-to-use application for verifying hashes of files, free for everyone. Made with .NET MAUI.
+A cross-platform, simple-to-use application for verifying hashes of files, free for everyone. Made with .NET MAUI.
 
 <p align="center">
   <img src="docs/res/Application_Screenshot.png" />
 </p>
+
+## Build and run project
+
+For macOS:
+
+```bash
+cd Hasher
+dotnet build -t:Run -f net8.0-maccatalyst
+```
 
 ## Supported algorithms
 
