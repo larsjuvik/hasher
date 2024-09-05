@@ -8,25 +8,25 @@ using Services.Models;
 public partial class MainPageViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string selectedFilePath = "No file selected";
+    private string _selectedFilePath = "No file selected";
 
     [ObservableProperty]
-    private FileResult? filePickerResult;
+    private FileResult? _filePickerResult;
 
     [ObservableProperty]
-    private string? hash = null;
+    private string? _hash = null;
 
     [ObservableProperty]
-    private bool hasSelectedFile;
+    private bool _hasSelectedFile;
 
     [ObservableProperty]
-    private string[] hashAlgorithms = HashService.AvailableHashAlgorithms;
+    private string[] _hashAlgorithms = HashService.AvailableHashAlgorithms;
 
     [ObservableProperty]
-    private string selectedHashAlgorithm = HashService.AvailableHashAlgorithms[0];
+    private string _selectedHashAlgorithm = HashService.AvailableHashAlgorithms[0];
 
     [ObservableProperty]
-    private float hashingProgress = 0.0f;
+    private float _hashingProgress = 0.0f;
 
     [RelayCommand]
     private async Task StartHashing()

@@ -2,9 +2,9 @@
 
 namespace Hasher;
 
-public partial class MainPage : ContentPage
+public partial class MainPage
 {
-	private MainPageViewModel _viewModel => (MainPageViewModel)BindingContext;
+	private MainPageViewModel ViewModel => (MainPageViewModel)BindingContext;
 
 
 	public MainPage()
@@ -15,7 +15,7 @@ public partial class MainPage : ContentPage
 
 	private async void CopyHashButton_Clicked(object sender, EventArgs e)
 	{
-		await Clipboard.SetTextAsync(_viewModel.Hash);
+		await Clipboard.SetTextAsync(ViewModel.Hash);
 	}
 
 	private async void SelectFileButton_Clicked(object sender, EventArgs e)
@@ -26,25 +26,25 @@ public partial class MainPage : ContentPage
 		// Create a file stream from result
 		if (filePickerResult != null)
 		{
-			_viewModel.SelectedFilePath = filePickerResult.FullPath;
-			_viewModel.HasSelectedFile = true;
-			_viewModel.FilePickerResult = filePickerResult;
+			ViewModel.SelectedFilePath = filePickerResult.FullPath;
+			ViewModel.HasSelectedFile = true;
+			ViewModel.FilePickerResult = filePickerResult;
 		}
 		else
 		{
-			_viewModel.SelectedFilePath = "No valid file selected";
-			_viewModel.HasSelectedFile = false;
+			ViewModel.SelectedFilePath = "No valid file selected";
+			ViewModel.HasSelectedFile = false;
 		}
 	}
 
 	private async void VerifyHashButton_Clicked(object sender, EventArgs e)
 	{
-		if (_viewModel.Hash == null)
+		if (ViewModel.Hash == null)
 		{
 			return;
 		}
 
-		var result = _viewModel.Hash == HashToVerifyEntry.Text;
+		var result = ViewModel.Hash == HashToVerifyEntry.Text;
 		await DisplayAlert("Hash Verification", result ? "Hashes match!" : "Hashes do not match!", "OK");
 	}
 }
