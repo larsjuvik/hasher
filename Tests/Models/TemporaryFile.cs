@@ -3,21 +3,21 @@ namespace Tests.Models;
 using System;
 using System.IO;
 
-class TemporaryFile : IDisposable
+internal class TemporaryFile : IDisposable
 {
-    public string FilePath { get; }
-    public FileStream FileStream { get; set; }
+    private readonly string _filePath;
+    public FileStream FileStream { get; }
 
     public TemporaryFile(string input)
     {
-        FilePath = Path.GetTempFileName();
-        File.WriteAllText(FilePath, input);
-        FileStream = File.OpenRead(FilePath);
+        _filePath = Path.GetTempFileName();
+        File.WriteAllText(_filePath, input);
+        FileStream = File.OpenRead(_filePath);
     }
 
     public void Dispose()
     {
         FileStream.Dispose();
-        File.Delete(FilePath);
+        File.Delete(_filePath);
     }
 }

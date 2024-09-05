@@ -5,8 +5,7 @@ namespace Hasher;
 public partial class MainPage
 {
 	private MainPageViewModel ViewModel => (MainPageViewModel)BindingContext;
-
-
+	
 	public MainPage()
 	{
 		InitializeComponent();
