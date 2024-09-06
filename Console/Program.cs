@@ -1,5 +1,8 @@
-﻿using CommandLine;
+﻿using System.Security.Cryptography;
+using CommandLine;
 using CommandLine.Text;
+using Services;
+using Services.Models;
 
 await Parser.Default.ParseArguments<CommandLineOptions>(args)
     .WithNotParsed(errors =>
@@ -10,9 +13,28 @@ await Parser.Default.ParseArguments<CommandLineOptions>(args)
 
 static async Task RunAsync(CommandLineOptions options)
 {
-    // Arguments parsed successfully
-    Console.WriteLine("File: " + options.InputFile);
-    Console.WriteLine("Alg.: " + options.Algorithm);
+    var cancellationTokenSource = new CancellationTokenSource();
+    var cancellationToken = cancellationTokenSource.Token;
+
+    var progressPercentage = 0.0f;
+    var progress = new Progress<HashingProgress>(p =>
+    {
+        progressPercentage = p.PercentageComplete;
+    });
+
+    // Creating file stream
+    if (!File.Exists(options.InputFile))
+    {
+        return;
+    }
+    var fileStream = File.OpenRead(options.InputFile);
+
+    // Convert chosen algorithm to enum
+    var selectedHashAlgorithm = HashService.GetAlgorithmFromString(options.Algorithm);
+    // TODO check if parsing alg was success
+
+    var hash = await HashService.Hash(selectedHashAlgorithm, fileStream, progress, cancellationToken);
+    Console.WriteLine(hash);
 }
 
 internal class CommandLineOptions
