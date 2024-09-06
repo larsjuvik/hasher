@@ -2,8 +2,9 @@
 **/bin/
 **/obj/
 
-# Visual Studio files
+# IDE files
 .vs/
+.idea/
 
 # NuGet packages
 *.nupkg
