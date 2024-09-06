@@ -1,22 +1,21 @@
 ﻿namespace Services;
 
 using System.IO;
-using Services.Models;
+using Models;
 using System.Security.Cryptography;
 
 public static class HashService
 {
     public enum Algorithm
     {
-        MD5,
-
-        SHA1,
-        SHA256,
-        SHA384,
-        SHA512
+        Md5,
+        Sha1,
+        Sha256,
+        Sha384,
+        Sha512
     }
 
-    public static string[] AvailableHashAlgorithms { get => Enum.GetNames(typeof(Algorithm)); }
+    public static string[] AvailableHashAlgorithms => Enum.GetNames(typeof(Algorithm));
 
     /// <summary>
     /// Hashes the input using the specified algorithm. Provides feedback on progress.
@@ -47,11 +46,11 @@ public static class HashService
     {
         return algorithm switch
         {
-            Algorithm.MD5 => System.Security.Cryptography.MD5.Create(),
-            Algorithm.SHA1 => System.Security.Cryptography.SHA1.Create(),
-            Algorithm.SHA256 => System.Security.Cryptography.SHA256.Create(),
-            Algorithm.SHA384 => System.Security.Cryptography.SHA384.Create(),
-            Algorithm.SHA512 => System.Security.Cryptography.SHA512.Create(),
+            Algorithm.Md5 => MD5.Create(),
+            Algorithm.Sha1 => SHA1.Create(),
+            Algorithm.Sha256 => SHA256.Create(),
+            Algorithm.Sha384 => SHA384.Create(),
+            Algorithm.Sha512 => SHA512.Create(),
             _ => throw new Exception("Invalid algorithm")
         };
     }
