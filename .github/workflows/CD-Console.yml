@@ -10,7 +10,7 @@ on:
 jobs:
   buildAndDeploy:
     runs-on: windows-latest
-    if: ${{ github.event.workflow_run.conclustion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
   
     steps:
     - uses: actions/checkout@v4
