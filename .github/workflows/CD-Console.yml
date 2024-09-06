@@ -1,16 +1,17 @@
-name: Publish hasher CLI tool for Windows / macOS
+# Publish hasher CLI tool for Windows and macOS
+name: CD-Console
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
 
 jobs:
-  build:
-
+  buildAndDeploy:
     runs-on: windows-latest
-
+    if: ${{ github.event.workflow_run.conclustion == 'success' }}
+  
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
