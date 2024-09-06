@@ -1,4 +1,5 @@
-name: Build & Test Hasher (GUI and CLI)
+# Build and run tests for solution
+name: CI
 
 on:
   push:
