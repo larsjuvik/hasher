@@ -5,7 +5,6 @@ using CommandLine.Text;
 var result = Parser.Default.ParseArguments<CommandLineOptions>(Environment.GetCommandLineArgs())
     .WithNotParsed(errors =>
     {
-        Console.WriteLine("Invalid command line arguments.");
         Environment.Exit(1);
     });
 
