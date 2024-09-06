@@ -15,6 +15,16 @@ public static class HashService
         Sha512
     }
 
+    /// <summary>
+    /// Returns an algorithm from a string (ignoring case)
+    /// </summary>
+    /// <param name="algorithm">The algorithm to get</param>
+    /// <returns>The algorithm enum with value corresponding to string</returns>
+    public static Algorithm GetAlgorithmFromString(string algorithm)
+    {
+        return Enum.Parse<Algorithm>(algorithm, true);
+    }
+
     public static string[] AvailableHashAlgorithms => Enum.GetNames(typeof(Algorithm));
 
     /// <summary>

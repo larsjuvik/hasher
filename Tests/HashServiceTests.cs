@@ -16,7 +16,7 @@ public class HashServiceTest
     [InlineData("SHA512", "test", "ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff")]
     public async Task TestHashesFromMemoryStream(string algorithm, string input, string expected)
     {
-        var algorithmEnum = Enum.Parse<HashService.Algorithm>(algorithm);
+        var algorithmEnum = HashService.GetAlgorithmFromString(algorithm);
         var inputMemoryStream = new MemoryStream(Encoding.UTF8.GetBytes(input));
         var progress = new Progress<HashingProgress>();
 
@@ -34,7 +34,7 @@ public class HashServiceTest
     public async Task TestHashesFromFile(string algorithm, string input, string expected)
     {
         using var tempFile = new TemporaryFile(input);
-        var algorithmEnum = Enum.Parse<HashService.Algorithm>(algorithm);
+        var algorithmEnum = HashService.GetAlgorithmFromString(algorithm);
         var progress = new Progress<HashingProgress>();
 
         var actual = await HashService.Hash(algorithmEnum, tempFile.FileStream, progress, CancellationToken.None);
