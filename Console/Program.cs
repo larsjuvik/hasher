@@ -1,26 +1,18 @@
 ﻿using CommandLine;
 using CommandLine.Text;
 
-class Program
-{
-    public static async Task Main(string[] args)
+await Parser.Default.ParseArguments<CommandLineOptions>(args)
+    .WithNotParsed(errors =>
     {
-        await Parser.Default.ParseArguments<CommandLineOptions>(args)
-            .WithNotParsed(errors =>
-            {
-                Environment.Exit(1);
-            })
-            .WithParsedAsync(RunAsync);
+        Environment.Exit(1);
+    })
+    .WithParsedAsync(RunAsync);
 
-
-
-        static async Task RunAsync(CommandLineOptions options)
-        {
-            // Arguments parsed successfully
-            Console.WriteLine("File: " + options.InputFile);
-            Console.WriteLine("Alg.: " + options.Algorithm);
-        }
-    }
+static async Task RunAsync(CommandLineOptions options)
+{
+    // Arguments parsed successfully
+    Console.WriteLine("File: " + options.InputFile);
+    Console.WriteLine("Alg.: " + options.Algorithm);
 }
 
 internal class CommandLineOptions
