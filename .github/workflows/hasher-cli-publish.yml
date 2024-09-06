@@ -1,4 +1,4 @@
-name: Publish hasher CLI tool
+name: Publish hasher CLI tool for Windows / macOS
 
 on:
   push:
@@ -24,9 +24,9 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish for macOS
-      run: dotnet publish -c Release --self-contained -r osx-x64 -o output -p:AssemblyName=hasher-mac Console/Console.csproj
+      run: dotnet publish -c Release --self-contained -r osx-x64 -o output -p:AssemblyName=hasher-mac-x64 Console/Console.csproj
     - name: Publish for Windows
-      run: dotnet publish -c Release --self-contained -r win-x64 -o output -p:AssemblyName=hasher-win Console/Console.csproj
+      run: dotnet publish -c Release --self-contained -r win-x64 -o output -p:AssemblyName=hasher-win-x64 Console/Console.csproj
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.2.1-node20
       with:
