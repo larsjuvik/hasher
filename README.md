@@ -1,6 +1,7 @@
 # Hasher
 
 [![CI](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml/badge.svg)](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml)
+[![CD-Console](https://github.com/larsjuvik/hasher/actions/workflows/CD-Console.yml/badge.svg)](https://github.com/larsjuvik/hasher/actions/workflows/CD-Console.yml)
 ![GitHub License](https://img.shields.io/github/license/larsjuvik/hasher)
 ![Static Badge](https://img.shields.io/badge/made_with-C%23-blue)
 
