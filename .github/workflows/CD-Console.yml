@@ -29,7 +29,7 @@ jobs:
     - name: Publish for Windows
       run: dotnet publish -c Release --self-contained -r win-x64 -o output -p:AssemblyName=hasher-win-x64 Console/Console.csproj
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.2.1-node20
+      uses: actions/upload-artifact@v4.4.0
       with:
         name: hasher
         path: ./output/*
