@@ -1,18 +1,23 @@
-﻿// See https://aka.ms/new-console-template for more information
-using CommandLine;
+﻿using CommandLine;
 using CommandLine.Text;
 
-var result = Parser.Default.ParseArguments<CommandLineOptions>(Environment.GetCommandLineArgs())
+await Parser.Default.ParseArguments<CommandLineOptions>(Environment.GetCommandLineArgs())
     .WithNotParsed(errors =>
     {
         Environment.Exit(1);
-    });
+    })
+    .WithParsedAsync(RunAsync);
 
-// Arguments parsed successfully
-Console.WriteLine("File: " + result.Value.InputFile);
-Console.WriteLine("Alg.: " + result.Value.Algorithm);
 
-class CommandLineOptions
+
+static async Task RunAsync(CommandLineOptions options)
+{
+    // Arguments parsed successfully
+    Console.WriteLine("File: " + options.InputFile);
+    Console.WriteLine("Alg.: " + options.Algorithm);
+}
+
+internal class CommandLineOptions
 {
     [Option('f', "file", Required = true, HelpText = "Path to the file to hash")]
     public required string InputFile { get; set; }
