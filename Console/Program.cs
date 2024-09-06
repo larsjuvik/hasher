@@ -8,11 +8,15 @@ var result = Parser.Default.ParseArguments<CommandLineOptions>(Environment.GetCo
         Environment.Exit(1);
     });
 
+// Arguments parsed successfully
+Console.WriteLine("File: " + result.Value.InputFile);
+Console.WriteLine("Alg.: " + result.Value.Algorithm);
+
 class CommandLineOptions
 {
     [Option('f', "file", Required = true, HelpText = "Path to the file to hash")]
-    public string? InputFile { get; set; }
+    public required string InputFile { get; set; }
 
-    [Option('a', "algorithm", Required = true, HelpText = "Hash algorithm to use")]
-    public string? Algorithm { get; set; }
+    [Option('a', "algorithm", Default = "sha256", Required = false, HelpText = "Hash algorithm to use")]
+    public required string Algorithm { get; set; }
 }
