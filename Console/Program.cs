@@ -37,7 +37,15 @@ static async Task RunAsync(CommandLineOptions options)
         var selectedHashAlgorithm = HashService.GetAlgorithmFromString(options.Algorithm);
         var hash = await HashService.Hash(selectedHashAlgorithm, fileStream, progress, cancellationToken);
         progressBar.Dispose();
+        
         Console.WriteLine($"{selectedHashAlgorithm.ToString().ToUpper()}: {hash}");
+        if (!string.IsNullOrEmpty(options.Verify))
+        {
+            var hashesMatch = options.Verify == hash;
+            var hashesMatchMessage = hashesMatch ? "MATCH OK" : "MATCH FAILED";
+            var color = hashesMatch ? ConsoleColor.Green : ConsoleColor.Red;
+            Console.WriteLine($"Verify: {hashesMatchMessage}", color);
+        }
     }
     catch (Exception e)
     {
@@ -52,6 +60,9 @@ internal class CommandLineOptions
 
     [Option('a', "algorithm", Default = "sha256", Required = false, HelpText = "Hash algorithm to use")]
     public required string Algorithm { get; set; }
+    
+    [Option('v', "verify", Default = null, Required = false, HelpText = "Verify a string towards hash")]
+    public string? Verify { get; set; }
 
     [Usage(ApplicationAlias = "hasher")]
     public static IEnumerable<Example> Examples =>
