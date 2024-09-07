@@ -5,16 +5,16 @@
 ![GitHub License](https://img.shields.io/github/license/larsjuvik/hasher)
 ![Static Badge](https://img.shields.io/badge/made_with-C%23-blue)
 
-**This project is still in alpha - expect the software to have errors.**
-
 A cross-platform, simple-to-use application for verifying hashes of files, free for everyone. Made with .NET MAUI.
 
-<p align="left">
-  <img src="docs/res/Hasher_GUI.png" />
+
+<p align="center">
+  <img src="docs/res/Hasher_GUI.png" style="width: 700px" />
 </p>
-<p align="right">
+<p align="center" style="width: 700px">
   <img src="docs/res/Hasher_Console.png" />
 </p>
+
 
 ## Build and run project
 
