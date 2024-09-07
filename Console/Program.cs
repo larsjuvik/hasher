@@ -2,6 +2,7 @@
 using CommandLine.Text;
 using Services;
 using Services.Models;
+using ShellProgressBar;
 
 await Parser.Default.ParseArguments<CommandLineOptions>(args)
     .WithNotParsed(errors =>
@@ -16,10 +17,8 @@ static async Task RunAsync(CommandLineOptions options)
     var cancellationTokenSource = new CancellationTokenSource();
     var cancellationToken = cancellationTokenSource.Token;
     
-    var progress = new Progress<HashingProgress>(p =>
-    {
-        // TODO: log progress
-    });
+    var progressBar = new ProgressBar(1000, "Hashing");
+    var progress = progressBar.AsProgress<HashingProgress>(_ => string.Empty, hashingProgress => hashingProgress.PercentageComplete);
 
     // Creating file stream
     if (!File.Exists(options.InputFile))
