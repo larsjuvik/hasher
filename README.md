@@ -11,8 +11,8 @@ A cross-platform, simple-to-use application for verifying hashes of files, free 
 <p align="center">
   <img src="docs/res/Hasher_GUI.png" style="width: 700px" />
 </p>
-<p align="center" style="width: 700px">
-  <img src="docs/res/Hasher_Console.png" />
+<p align="center" >
+  <img src="docs/res/Hasher_Console.png" style="width: 670px" />
 </p>
 
 
