@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography;
-using CommandLine;
+﻿using CommandLine;
 using CommandLine.Text;
 using Services;
 using Services.Models;
@@ -10,16 +9,16 @@ await Parser.Default.ParseArguments<CommandLineOptions>(args)
         Environment.Exit(1);
     })
     .WithParsedAsync(RunAsync);
+return;
 
 static async Task RunAsync(CommandLineOptions options)
 {
     var cancellationTokenSource = new CancellationTokenSource();
     var cancellationToken = cancellationTokenSource.Token;
-
-    var progressPercentage = 0.0f;
+    
     var progress = new Progress<HashingProgress>(p =>
     {
-        progressPercentage = p.PercentageComplete;
+        // TODO: log progress
     });
 
     // Creating file stream
@@ -30,11 +29,16 @@ static async Task RunAsync(CommandLineOptions options)
     var fileStream = File.OpenRead(options.InputFile);
 
     // Convert chosen algorithm to enum
-    var selectedHashAlgorithm = HashService.GetAlgorithmFromString(options.Algorithm);
-    // TODO check if parsing alg was success
-
-    var hash = await HashService.Hash(selectedHashAlgorithm, fileStream, progress, cancellationToken);
-    Console.WriteLine(hash);
+    try
+    {
+        var selectedHashAlgorithm = HashService.GetAlgorithmFromString(options.Algorithm);
+        var hash = await HashService.Hash(selectedHashAlgorithm, fileStream, progress, cancellationToken);
+        Console.WriteLine($"{selectedHashAlgorithm.ToString().ToUpper()}: {hash}");
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"[ERROR] Algorithm {options.Algorithm} not recognized.");
+    }
 }
 
 internal class CommandLineOptions
