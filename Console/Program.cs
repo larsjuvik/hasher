@@ -17,7 +17,11 @@ static async Task RunAsync(CommandLineOptions options)
     var cancellationTokenSource = new CancellationTokenSource();
     var cancellationToken = cancellationTokenSource.Token;
     
-    var progressBar = new ProgressBar(1000, "Hashing");
+    var progressBar = new ProgressBar(1000, "Hashing", new ProgressBarOptions
+    {
+        CollapseWhenFinished = true,
+        ShowEstimatedDuration = true
+    });
     var progress = progressBar.AsProgress<HashingProgress>(_ => string.Empty, hashingProgress => hashingProgress.PercentageComplete);
 
     // Creating file stream
@@ -32,6 +36,7 @@ static async Task RunAsync(CommandLineOptions options)
     {
         var selectedHashAlgorithm = HashService.GetAlgorithmFromString(options.Algorithm);
         var hash = await HashService.Hash(selectedHashAlgorithm, fileStream, progress, cancellationToken);
+        progressBar.Dispose();
         Console.WriteLine($"{selectedHashAlgorithm.ToString().ToUpper()}: {hash}");
     }
     catch (Exception e)
