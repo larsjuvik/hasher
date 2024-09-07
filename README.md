@@ -9,8 +9,11 @@
 
 A cross-platform, simple-to-use application for verifying hashes of files, free for everyone. Made with .NET MAUI.
 
-<p align="center">
-  <img src="docs/res/Application_Screenshot.png" />
+<p align="left">
+  <img src="docs/res/Hasher_GUI.png" />
+</p>
+<p align="right">
+  <img src="docs/res/Hasher_Console.png" />
 </p>
 
 ## Build and run project
