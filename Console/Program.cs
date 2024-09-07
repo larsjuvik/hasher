@@ -44,7 +44,9 @@ static async Task RunAsync(CommandLineOptions options)
             var hashesMatch = options.Verify == hash;
             var hashesMatchMessage = hashesMatch ? "MATCH OK" : "MATCH FAILED";
             var color = hashesMatch ? ConsoleColor.Green : ConsoleColor.Red;
+            Console.ForegroundColor = color;
             Console.WriteLine($"Verify: {hashesMatchMessage}", color);
+            Console.ResetColor();
         }
     }
     catch (Exception e)
