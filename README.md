@@ -4,7 +4,8 @@
 ![GitHub License](https://img.shields.io/github/license/larsjuvik/hasher)
 ![Static Badge](https://img.shields.io/badge/made_with-C%23-blue)
 
-A cross-platform, simple-to-use application for verifying hashes of files, free for everyone. Also has a CLI-tool.
+A cross-platform, simple-to-use application for computing and verifying hashes of files.
+Comes as a GUI- or CLI-application. Built on .NET 8.
 
 
 <p align="center">
@@ -17,11 +18,16 @@ A cross-platform, simple-to-use application for verifying hashes of files, free 
 
 ## Build and run project
 
-For macOS:
+In order to build this project, you need to install MAUI. This has been tested with .NET 8.
+
+```shell
+dotnet workload install maui
+```
+
+### macOS
 
 ```bash
-cd Hasher
-dotnet build -t:Run -f net8.0-maccatalyst
+dotnet publish -c Release -f net8.0-maccatalyst Hasher/Hasher.csproj
 ```
 
 ## Supported algorithms
@@ -34,15 +40,12 @@ dotnet build -t:Run -f net8.0-maccatalyst
 
 ## Remaining work
 
-This application is not done yet, and there is several things that needs implementation.
-
-1. More test-cases of the hashing computations, and more testing of the application itself.
-2. Make the "Copy" and "Verify" buttons nicer. Right now their color scheme is a bit confusing.
-3. ~~Add an app logo, s.t. it shows a different logo than the purple ".NET" in the dock.~~
-4. CI/CD pipeline.
-5. Testing on Windows. Has only been tested on macOS so far.
-6. Add build instructions for Windows
-7. ~~Add console application for hasher~~
+1. More testing of the application itself, and more test-cases in unit tests
+2. ~~Add an app logo, s.t. it shows a different logo than the purple ".NET" in the dock.~~
+3. ~~CI pipeline~~
+4. Testing on Windows
+5. Build instructions for Windows
+6. ~~Add console application for hasher~~
 
 ## Thanks :heart:
 
