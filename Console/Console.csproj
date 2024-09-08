@@ -1,10 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <SelfContained>true</SelfContained>
-    <PublishTrimmed>true</PublishTrimmed>
-    <TrimMode>partial</TrimMode>
-    <PublishSingleFile>true</PublishSingleFile>
     <AssemblyName>hasher</AssemblyName>
     <Version>1.0.0</Version>
     <OutputType>Exe</OutputType>
@@ -14,6 +10,10 @@
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <SelfContained>true</SelfContained>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>partial</TrimMode>
+    <PublishSingleFile>true</PublishSingleFile>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
   </PropertyGroup>
