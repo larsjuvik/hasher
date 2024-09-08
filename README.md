@@ -52,3 +52,4 @@ dotnet publish -c Release -f net8.0-maccatalyst Hasher/Hasher.csproj
 Thanks to the following libraries and frameworks for helping build hasher:
 * [.NET MAUI](https://github.com/dotnet/maui)
 * [ShellProgressBar](https://github.com/Mpdreamz/shellprogressbar)
+* [Command Line Parser](https://github.com/commandlineparser/commandline)
