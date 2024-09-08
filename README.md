@@ -1,11 +1,10 @@
 # Hasher
 
 [![CI](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml/badge.svg)](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml)
-[![CD-Console](https://github.com/larsjuvik/hasher/actions/workflows/CD-Console.yml/badge.svg)](https://github.com/larsjuvik/hasher/actions/workflows/CD-Console.yml)
 ![GitHub License](https://img.shields.io/github/license/larsjuvik/hasher)
 ![Static Badge](https://img.shields.io/badge/made_with-C%23-blue)
 
-A cross-platform, simple-to-use application for verifying hashes of files, free for everyone. Made with .NET MAUI.
+A cross-platform, simple-to-use application for verifying hashes of files, free for everyone. Also has a CLI-tool.
 
 
 <p align="center">
@@ -43,4 +42,10 @@ This application is not done yet, and there is several things that needs impleme
 4. CI/CD pipeline.
 5. Testing on Windows. Has only been tested on macOS so far.
 6. Add build instructions for Windows
-7. Add console application for hasher
+7. ~~Add console application for hasher~~
+
+## Thanks :heart:
+
+Thanks to the following libraries and frameworks for helping build hasher:
+* [.NET MAUI](https://github.com/dotnet/maui)
+* [ShellProgressBar](https://github.com/Mpdreamz/shellprogressbar)
