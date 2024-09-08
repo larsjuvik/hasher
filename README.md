@@ -4,7 +4,7 @@
 ![GitHub License](https://img.shields.io/github/license/larsjuvik/hasher)
 ![Static Badge](https://img.shields.io/badge/made_with-C%23-blue)
 
-A cross-platform, simple-to-use application for computing and verifying hashes of files.
+A cross-platform, simple-to-use application for computing and verifying file-hashes.
 Comes as a GUI- or CLI-application. Built on .NET 8.
 
 
@@ -18,7 +18,7 @@ Comes as a GUI- or CLI-application. Built on .NET 8.
 
 ## Build and run project
 
-In order to build this project, you need to install MAUI. This has been tested with .NET 8.
+In order to build this project, you need to install MAUI.
 
 ```shell
 dotnet workload install maui
