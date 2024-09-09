@@ -8,12 +8,8 @@ const int exitSuccess = 0;
 const int exitError = 1;
 
 var result = Parser.Default.ParseArguments<CommandLineOptions>(args);
-await result.WithNotParsed(errors =>
+await result.WithNotParsed(_ =>
 {
-    if (result.Value.ListAlgorithms)
-    {
-        return;
-    }
     Environment.Exit(exitError);
 })
 .WithParsedAsync(RunAsync);
