@@ -5,7 +5,7 @@
 ![Static Badge](https://img.shields.io/badge/made_with-C%23-blue)
 
 A cross-platform, simple-to-use application for computing and verifying file-hashes.
-Comes as a GUI- or CLI-application. Built on .NET 8.
+Comes as a GUI- and console-application. Built on .NET 8.
 
 
 <p align="center">
