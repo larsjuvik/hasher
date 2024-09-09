@@ -16,7 +16,7 @@ Comes as a GUI- or CLI-application. Built on .NET 8.
 </p>
 
 
-## Build and run project
+## Build project
 
 In order to build this project, you need to install MAUI.
 
@@ -28,6 +28,15 @@ dotnet workload install maui
 
 ```bash
 dotnet publish -c Release -f net8.0-maccatalyst Hasher/Hasher.csproj
+```
+
+## Run Hasher in terminal
+
+In UNIX-shells:
+```shell
+./hasher -a sha256 -f /path/to/file  # hash file
+./hasher -a sha256 -f /path/to/file -v enter_your_hash  # hash and then verify
+./hasher -l  # list available algorithms
 ```
 
 ## Supported algorithms
