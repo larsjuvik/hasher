@@ -25,7 +25,7 @@ public static class HashService
         return Enum.Parse<Algorithm>(algorithm, true);
     }
 
-    public static string[] AvailableHashAlgorithms => Enum.GetNames(typeof(Algorithm));
+    public static string[] AvailableHashAlgorithms => Enum.GetNames(typeof(Algorithm)).Select(a => a.ToUpper()).ToArray();
 
     /// <summary>
     /// Hashes the input using the specified algorithm. Provides feedback on progress.
