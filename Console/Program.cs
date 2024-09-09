@@ -121,7 +121,7 @@ internal class CommandLineOptions
     [Option('f', "file", Required = false, HelpText = "Path to the file to hash", SetName = "Hashing")]
     public string? InputFile { get; init; }
 
-    [Option('a', "algorithm", Default = "sha256", Required = false, HelpText = "Hash algorithm to use", SetName = "Hashing")]
+    [Option('a', "algorithm", Default = null, Required = false, HelpText = "Hash algorithm to use", SetName = "Hashing")]
     public string? Algorithm { get; init; }
     
     [Option('v', "verify", Default = null, Required = false, HelpText = "Verify a string towards hash", SetName = "Hashing")]
