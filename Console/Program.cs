@@ -75,7 +75,7 @@ static async Task RunAsync(CommandLineOptions options)
         var cancellationToken = cancellationTokenSource.Token;
         
         // Setup the progress bar
-        using var progressBar = new ProgressBar(1000, "Hashing", new ProgressBarOptions
+        var progressBar = new ProgressBar(1000, "Hashing", new ProgressBarOptions
         {
             CollapseWhenFinished = true,
             ShowEstimatedDuration = true
@@ -86,6 +86,7 @@ static async Task RunAsync(CommandLineOptions options)
         var hash = await HashService.Hash(selectedHashAlgorithm, fileStream, progress, cancellationToken);
         
         // Print out result
+        progressBar.Dispose();
         Console.WriteLine($"{selectedHashAlgorithm.ToString().ToUpper()}: {hash}");
         
         // If verify flag is used, verify the hash
