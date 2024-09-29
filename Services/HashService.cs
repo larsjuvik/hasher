@@ -1,4 +1,7 @@
-﻿namespace Services;
+﻿using System.ComponentModel;
+using System.Diagnostics;
+
+namespace Services;
 
 using System.IO;
 using Models;
@@ -35,7 +38,8 @@ public static class HashService
     /// <param name="progress">A progress reporter</param>
     /// <param name="cancellationToken">A cancellation token</param>
     /// <returns>The hash of the input</returns>
-    /// <exception cref="Exception">Thrown when an invalid algorithm is specified</exception>
+    /// <exception cref="NullReferenceException">Thrown if hash result is null</exception>
+    /// <exception cref="InvalidEnumArgumentException">Thrown when an invalid algorithm is specified</exception>
     public static async Task<string> Hash(Algorithm algorithm, Stream input, IProgress<HashingProgress> progress, CancellationToken cancellationToken)
     {
         using var hashAlgorithm = GetHashAlgorithm(algorithm);
@@ -49,6 +53,12 @@ public static class HashService
             progress.Report(new HashingProgress { PercentageComplete = (float)input.Position / totalBytes });
         }
         hashAlgorithm.TransformFinalBlock(buffer, 0, 0);
+
+        if (hashAlgorithm.Hash == null)
+        {
+            throw new NullReferenceException("Hash Algorithm is null");
+        }
+
         return BitConverter.ToString(hashAlgorithm.Hash).Replace("-", "").ToLower();
     }
 
@@ -61,7 +71,7 @@ public static class HashService
             Algorithm.Sha256 => SHA256.Create(),
             Algorithm.Sha384 => SHA384.Create(),
             Algorithm.Sha512 => SHA512.Create(),
-            _ => throw new Exception("Invalid algorithm")
+            _ => throw new InvalidEnumArgumentException("Invalid algorithm")
         };
     }
 }
