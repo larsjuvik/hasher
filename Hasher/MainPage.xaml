@@ -35,7 +35,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
             
-            <Label TextColor="Red" IsVisible="{Binding ErrorMessage, Converter={toolkit:IsNotNullConverter}}" Text="{Binding ErrorMessage}"/>
+            <Label HorizontalTextAlignment="Center" TextColor="Red" IsVisible="{Binding ErrorMessage, Converter={toolkit:IsNotNullConverter}}" Text="{Binding ErrorMessage}"/>
 
             <!-- Input fields -->
             <Grid RowSpacing="10"
