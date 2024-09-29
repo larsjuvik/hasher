@@ -18,6 +18,9 @@ public partial class MainPageViewModel : ObservableObject
 
     [ObservableProperty]
     private string? _hash = null;
+    
+    [ObservableProperty]
+    private string? _verifyText = null;
 
     [ObservableProperty]
     private bool _hasSelectedFile;
@@ -30,6 +33,38 @@ public partial class MainPageViewModel : ObservableObject
 
     [ObservableProperty]
     private float _hashingProgress = 0.0f;
+    
+    [RelayCommand]
+    private async Task SelectFile()
+    {
+        // Open file picker
+        var filePickerResult = await FilePicker.Default.PickAsync(PickOptions.Default);
+
+        // Create a file stream from result
+        if (filePickerResult != null)
+        {
+            SelectedFilePath = filePickerResult.FullPath;
+            HasSelectedFile = true;
+            FilePickerResult = filePickerResult;
+        }
+        else
+        {
+            SelectedFilePath = "No valid file selected";
+            HasSelectedFile = false;
+        }
+    }
+
+    [RelayCommand]
+    private async Task VerifyHash()
+    {
+        if (Hash == null)
+        {
+            return;
+        }
+
+        var result = Hash == VerifyText;
+        await Application.Current.MainPage.DisplayAlert("Hash Verification", result ? "Hashes match!" : "Hashes do not match!", "OK");
+    }
 
     [RelayCommand]
     private async Task StartHashing()

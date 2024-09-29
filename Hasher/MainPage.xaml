@@ -63,10 +63,9 @@
                 <Button
                     Grid.Column="1"
                     Grid.Row="0"
-                    x:Name="SelectFileButton"
                     Text="{Binding SelectedFilePath}"
                     SemanticProperties.Hint="Selects a file from your filesystem"
-                    Clicked="SelectFileButton_Clicked"
+                    Command="{Binding SelectFileCommand}"
                     MaximumHeightRequest="50"/>
 
                 <Label
@@ -134,19 +133,18 @@
                             Grid.Column="1"
                             Clicked="CopyHashButton_Clicked"/>
                     <Entry
-                        x:Name="HashToVerifyEntry"
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text=""
+                        Text="{Binding VerifyText}"
                         IsEnabled="True"
                         IsReadOnly="False"
                         FontSize="20"
                         Placeholder="Input hash you want to verify here"
                         MaximumHeightRequest="50"/>
                     <Button Text="Verify"
-                            Clicked="VerifyHashButton_Clicked"
+                            Command="{Binding VerifyHashCommand}"
                             Grid.Row="1"
-                            BackgroundColor="Green"
+                            BackgroundColor="CadetBlue"
                             Grid.Column="1"/>
                 </Grid>
 
