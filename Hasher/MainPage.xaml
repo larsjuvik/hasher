@@ -34,6 +34,8 @@
                 HeightRequest="50"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
+            
+            <Label IsVisible="{Binding ErrorMessage, Converter={toolkit:IsNotNullConverter}}" Text="{Binding ErrorMessage}"/>
 
             <!-- Input fields -->
             <Grid RowSpacing="10"

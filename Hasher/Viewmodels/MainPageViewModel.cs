@@ -12,6 +12,9 @@ public partial class MainPageViewModel : ObservableObject
 
     [ObservableProperty]
     private FileResult? _filePickerResult;
+    
+    [ObservableProperty]
+    private string? _errorMessage = null;
 
     [ObservableProperty]
     private string? _hash = null;
@@ -47,12 +50,14 @@ public partial class MainPageViewModel : ObservableObject
         var fileStream = await FilePickerResult.OpenReadAsync();
 
         // Convert chosen algorithm to enum
-        var successParseAlgorithm = Enum.TryParse<HashService.Algorithm>(SelectedHashAlgorithm, false, out var algorithm);
-        if (!successParseAlgorithm)
+        try
         {
-            return;
+            var algorithm = HashService.GetAlgorithmFromString(SelectedHashAlgorithm);
+            Hash = await HashService.Hash(algorithm, fileStream, progress, cancellationToken);
         }
-
-        Hash = await HashService.Hash(algorithm, fileStream, progress, cancellationToken);
+        catch (Exception)
+        {
+            ErrorMessage = "Hashing failed";
+        }
     }
 }
