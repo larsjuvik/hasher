@@ -1,4 +1,4 @@
-namespace Hasher.Services;
+namespace Hasher.GuiServices.Interfaces;
 
 public interface IDisplayService
 {

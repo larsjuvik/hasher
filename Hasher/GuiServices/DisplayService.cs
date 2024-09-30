@@ -1,4 +1,6 @@
-namespace Hasher.Services;
+using Hasher.GuiServices.Interfaces;
+
+namespace Hasher.GuiServices;
 
 public class DisplayService : IDisplayService
 {

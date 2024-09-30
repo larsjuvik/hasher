@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
-using Hasher.Services;
+using Hasher.GuiServices;
+using Hasher.GuiServices.Interfaces;
 using Hasher.Viewmodels;
 using Microsoft.Extensions.Logging;
 

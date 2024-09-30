@@ -1,5 +1,6 @@
 ﻿using CommandLine;
 using CommandLine.Text;
+using Console;
 using Services;
 using Services.Models;
 using ShellProgressBar;
@@ -19,9 +20,9 @@ return;
 
 static void RedPrint(string text)
 {
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine(text);
-    Console.ResetColor();
+    System.Console.ForegroundColor = ConsoleColor.Red;
+    System.Console.WriteLine(text);
+    System.Console.ResetColor();
 }
 
 static async Task RunAsync(CommandLineOptions options)
@@ -87,7 +88,7 @@ static async Task RunAsync(CommandLineOptions options)
         
         // Print out result
         progressBar.Dispose();
-        Console.WriteLine($"{selectedHashAlgorithm.ToString().ToUpper()}: {hash}");
+        System.Console.WriteLine($"{selectedHashAlgorithm.ToString().ToUpper()}: {hash}");
         
         // If verify flag is used, verify the hash
         if (!string.IsNullOrEmpty(options.Verify))
@@ -95,47 +96,50 @@ static async Task RunAsync(CommandLineOptions options)
             var hashesMatch = options.Verify == hash;
             var hashesMatchMessage = hashesMatch ? "MATCH OK" : "MATCH FAILED";
             var color = hashesMatch ? ConsoleColor.Green : ConsoleColor.Red;
-            Console.ForegroundColor = color;
-            Console.WriteLine($"Verify: {hashesMatchMessage}", color);
-            Console.ResetColor();
+            System.Console.ForegroundColor = color;
+            System.Console.WriteLine($"Verify: {hashesMatchMessage}", color);
+            System.Console.ResetColor();
         }
     }
     catch (Exception e)
     {
-        Console.WriteLine($"An error occured while hashing: {e.Message}");
+        System.Console.WriteLine($"An error occured while hashing: {e.Message}");
         Environment.Exit(exitError);
     }
 }
 
 static void PrintAvailableAlgorithmsAndExit()
 {
-    Console.WriteLine("Available algorithms:");
+    System.Console.WriteLine("Available algorithms:");
     foreach (var alg in HashService.AvailableHashAlgorithms)
     {
-        Console.WriteLine(alg);
+        System.Console.WriteLine(alg);
     }
     Environment.Exit(exitSuccess);
 }
 
-internal class CommandLineOptions
+namespace Console
 {
-    [Option('f', "file", Required = false, HelpText = "Path to the file to hash", SetName = "Hashing")]
-    public string? InputFile { get; init; }
+    internal class CommandLineOptions
+    {
+        [Option('f', "file", Required = false, HelpText = "Path to the file to hash", SetName = "Hashing")]
+        public string? InputFile { get; init; }
 
-    [Option('a', "algorithm", Default = null, Required = false, HelpText = "Hash algorithm to use", SetName = "Hashing")]
-    public string? Algorithm { get; init; }
+        [Option('a', "algorithm", Default = null, Required = false, HelpText = "Hash algorithm to use", SetName = "Hashing")]
+        public string? Algorithm { get; init; }
     
-    [Option('v', "verify", Default = null, Required = false, HelpText = "Verify a string towards hash", SetName = "Hashing")]
-    public string? Verify { get; init; }
+        [Option('v', "verify", Default = null, Required = false, HelpText = "Verify a string towards hash", SetName = "Hashing")]
+        public string? Verify { get; init; }
     
-    [Option('l', "list", Default = false, Required = false, HelpText = "List the available algorithms", SetName = "Metadata")]
-    public bool ListAlgorithms { get; init; }
+        [Option('l', "list", Default = false, Required = false, HelpText = "List the available algorithms", SetName = "Metadata")]
+        public bool ListAlgorithms { get; init; }
 
-    [Usage(ApplicationAlias = "hasher")]
-    public static IEnumerable<Example> Examples =>
-        new List<Example>
-        {
-            new("Hash file with SHA256", new CommandLineOptions { Algorithm = "sha256", InputFile = "input.txt" }),
-            new("Get available algorithms", new CommandLineOptions { ListAlgorithms = true })
-        };
+        [Usage(ApplicationAlias = "hasher")]
+        public static IEnumerable<Example> Examples =>
+            new List<Example>
+            {
+                new("Hash file with SHA256", new CommandLineOptions { Algorithm = "sha256", InputFile = "input.txt" }),
+                new("Get available algorithms", new CommandLineOptions { ListAlgorithms = true })
+            };
+    }
 }

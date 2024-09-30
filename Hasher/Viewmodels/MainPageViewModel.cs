@@ -1,11 +1,10 @@
-using Services;
-using Services.Models;
-
 namespace Hasher.Viewmodels;
 
+using GuiServices.Interfaces;
+using Services;
+using Services.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Services;
 
 public partial class MainPageViewModel(IDisplayService displayService) : ObservableObject
 {
