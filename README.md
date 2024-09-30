@@ -1,4 +1,4 @@
-# Hasher
+# Hasher :hash:
 
 [![CI](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml/badge.svg)](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml)
 ![GitHub License](https://img.shields.io/github/license/larsjuvik/hasher)
@@ -16,7 +16,7 @@ Comes as a GUI- and console-application. Built on .NET 8.
 </p>
 
 
-## Build project
+## Build project :hammer:
 
 In order to build this project, you need to install MAUI:
 
@@ -24,19 +24,14 @@ In order to build this project, you need to install MAUI:
 dotnet workload install maui
 ```
 
-### macOS
+### macOS :apple:
 
-GUI:
 ```bash
-dotnet publish -c Release -f net8.0-maccatalyst -p:CreatePackage=false Hasher/Hasher.csproj
+dotnet publish -c Release -f net8.0-maccatalyst -p:CreatePackage=false Hasher/Hasher.csproj # GUI
+dotnet publish -c Release Console/Console.csproj  # CLI
 ```
 
-CLI:
-```bash
-dotnet publish -c Release -o MY_OUTPUT_DIR Console/Console.csproj
-```
-
-## Console Examples
+## Console Examples :keyboard:
 
 In UNIX-shells:
 ```shell
@@ -46,7 +41,7 @@ In UNIX-shells:
 ./hasher -l  # list available algorithms
 ```
 
-## Supported algorithms
+## Supported algorithms :gear:
 
 - MD5
 - SHA1
@@ -54,7 +49,7 @@ In UNIX-shells:
 - SHA384
 - SHA512
 
-## Remaining work
+## Remaining work 🚧
 
 1. More testing of the application itself, and more test-cases in unit tests
 2. ~~Add an app logo, s.t. it shows a different logo than the purple ".NET" in the dock.~~
