@@ -28,7 +28,7 @@ dotnet workload install maui
 
 GUI:
 ```bash
-dotnet publish -c Release -f net8.0-maccatalyst -o MY_OUTPUT_DIR Hasher/Hasher.csproj
+dotnet publish -c Release -f net8.0-maccatalyst -p:CreatePackage=false Hasher/Hasher.csproj
 ```
 
 CLI:
