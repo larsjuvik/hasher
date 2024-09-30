@@ -12,13 +12,13 @@ Comes as a GUI- and console-application. Built on .NET 8.
   <img src="docs/res/Hasher_GUI.png" style="width: 700px" />
 </p>
 <p align="center" >
-  <img src="docs/res/Hasher_Console.png" style="width: 670px" />
+  <img src="docs/res/Hasher_Console.png" style="width: 668px" />
 </p>
 
 
 ## Build project
 
-In order to build this project, you need to install MAUI.
+In order to build this project, you need to install MAUI:
 
 ```shell
 dotnet workload install maui
@@ -26,11 +26,17 @@ dotnet workload install maui
 
 ### macOS
 
+GUI:
 ```bash
-dotnet publish -c Release -f net8.0-maccatalyst Hasher/Hasher.csproj
+dotnet publish -c Release -f net8.0-maccatalyst -o MY_OUTPUT_DIR Hasher/Hasher.csproj
 ```
 
-## Run Hasher in terminal
+CLI:
+```bash
+dotnet publish -c Release -o MY_OUTPUT_DIR Console/Console.csproj
+```
+
+## Console Examples
 
 In UNIX-shells:
 ```shell
