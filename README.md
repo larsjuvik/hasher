@@ -40,6 +40,7 @@ dotnet publish -c Release -o MY_OUTPUT_DIR Console/Console.csproj
 
 In UNIX-shells:
 ```shell
+./hasher --help  # show help screen
 ./hasher -a sha256 -f /path/to/file  # hash file
 ./hasher -a sha256 -f /path/to/file -v enter_your_hash  # hash and then verify
 ./hasher -l  # list available algorithms
