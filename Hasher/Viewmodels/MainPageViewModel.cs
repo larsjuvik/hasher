@@ -7,17 +7,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Services;
 
-public partial class MainPageViewModel : ObservableObject
+public partial class MainPageViewModel(IDisplayService displayService) : ObservableObject
 {
-    public MainPageViewModel() { }
-
-    public MainPageViewModel(IDisplayService displayService)
-    {
-        _displayService = displayService;
-    }
-    
-    private readonly IDisplayService _displayService;
-
     [ObservableProperty]
     private string _selectedFilePath = "No file selected";
 
@@ -74,7 +65,7 @@ public partial class MainPageViewModel : ObservableObject
         }
 
         var result = Hash == VerifyText;
-        await _displayService.ShowAsync("Hash Verification", result ? "Hashes match!" : "Hashes do not match!");
+        await displayService.ShowAsync("Hash Verification", result ? "Hashes match!" : "Hashes do not match!");
     }
 
     [RelayCommand]
