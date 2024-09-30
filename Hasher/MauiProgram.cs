@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Maui;
+using Hasher.Services;
+using Hasher.Viewmodels;
 using Microsoft.Extensions.Logging;
 
 namespace Hasher;
@@ -8,6 +10,12 @@ public static class MauiProgram
 	public static MauiApp CreateMauiApp()
 	{
 		var builder = MauiApp.CreateBuilder();
+		
+		// Services
+		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddTransient<MainPageViewModel>();
+		builder.Services.AddSingleton<IDisplayService, DisplayService>();
+		
 		builder
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()

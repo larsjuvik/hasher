@@ -1,12 +1,23 @@
+using Services;
+using Services.Models;
+
 namespace Hasher.Viewmodels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Services;
-using Services.Models;
 
 public partial class MainPageViewModel : ObservableObject
 {
+    public MainPageViewModel() { }
+
+    public MainPageViewModel(IDisplayService displayService)
+    {
+        _displayService = displayService;
+    }
+    
+    private readonly IDisplayService _displayService;
+
     [ObservableProperty]
     private string _selectedFilePath = "No file selected";
 
@@ -14,13 +25,13 @@ public partial class MainPageViewModel : ObservableObject
     private FileResult? _filePickerResult;
     
     [ObservableProperty]
-    private string? _errorMessage = null;
+    private string? _errorMessage;
 
     [ObservableProperty]
-    private string? _hash = null;
+    private string? _hash;
     
     [ObservableProperty]
-    private string? _verifyText = null;
+    private string? _verifyText;
 
     [ObservableProperty]
     private bool _hasSelectedFile;
@@ -32,7 +43,7 @@ public partial class MainPageViewModel : ObservableObject
     private string _selectedHashAlgorithm = HashService.AvailableHashAlgorithms[0];
 
     [ObservableProperty]
-    private float _hashingProgress = 0.0f;
+    private float _hashingProgress;
     
     [RelayCommand]
     private async Task SelectFile()
@@ -63,7 +74,7 @@ public partial class MainPageViewModel : ObservableObject
         }
 
         var result = Hash == VerifyText;
-        await Application.Current.MainPage.DisplayAlert("Hash Verification", result ? "Hashes match!" : "Hashes do not match!", "OK");
+        await _displayService.ShowAsync("Hash Verification", result ? "Hashes match!" : "Hashes do not match!");
     }
 
     [RelayCommand]

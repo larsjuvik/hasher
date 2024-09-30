@@ -1,11 +1,13 @@
-﻿namespace Hasher;
+﻿using Hasher.Viewmodels;
+
+namespace Hasher;
 
 public partial class App
 {
-	public App()
+	public App(IServiceProvider serviceProvider)
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+		MainPage = new MainPage(serviceProvider.GetRequiredService<MainPageViewModel>());
 	}
 }

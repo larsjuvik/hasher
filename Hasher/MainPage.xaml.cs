@@ -6,9 +6,10 @@ public partial class MainPage
 {
 	private MainPageViewModel ViewModel => (MainPageViewModel)BindingContext;
 	
-	public MainPage()
+	public MainPage(MainPageViewModel viewModel)
 	{
 		InitializeComponent();
+		BindingContext = viewModel;
 		HashAlgorithmPicker.SelectedIndex = 0;
 	}
 
@@ -17,4 +18,3 @@ public partial class MainPage
 		await Clipboard.SetTextAsync(ViewModel.Hash);
 	}
 }
-
