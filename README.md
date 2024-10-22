@@ -1,4 +1,6 @@
-# Hasher :hash:
+<p align="center">
+  <img src="docs/res/logo.png" style="width: 400px" />
+</p>
 
 [![CI](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml/badge.svg)](https://github.com/larsjuvik/hasher/actions/workflows/CI.yml)
 ![GitHub License](https://img.shields.io/github/license/larsjuvik/hasher)
