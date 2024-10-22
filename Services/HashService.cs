@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
+﻿namespace Services;
 
-namespace Services;
-
+using System.ComponentModel;
 using System.IO;
 using Models;
 using System.Security.Cryptography;
