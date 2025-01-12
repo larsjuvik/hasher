@@ -10,14 +10,12 @@
 A cross-platform, simple-to-use application for computing and verifying file-hashes.
 Comes as a GUI- and console-application. Built on .NET 8.
 
-
 <p align="center">
   <img src="docs/res/Hasher_GUI.png" style="width: 700px" />
 </p>
 <p align="center" >
   <img src="docs/res/Hasher_Console.png" style="width: 668px" />
 </p>
-
 
 ## Build project :hammer:
 
@@ -30,13 +28,14 @@ dotnet workload install maui
 ### macOS :apple:
 
 ```bash
-dotnet publish -c Release -f net8.0-maccatalyst -p:CreatePackage=false Hasher/Hasher.csproj # GUI
+dotnet publish -c Release -f net9.0-maccatalyst -p:CreatePackage=false Hasher/Hasher.csproj # GUI
 dotnet publish -c Release Console/Console.csproj  # CLI
 ```
 
 ## Console Examples :keyboard:
 
 In UNIX-shells:
+
 ```shell
 ./hasher --help  # show help screen
 ./hasher -a sha256 -f /path/to/file  # hash file
@@ -64,6 +63,7 @@ In UNIX-shells:
 ## Thanks :heart:
 
 Thanks to the following libraries and frameworks for helping build hasher:
-* [.NET MAUI](https://github.com/dotnet/maui)
-* [ShellProgressBar](https://github.com/Mpdreamz/shellprogressbar)
-* [Command Line Parser](https://github.com/commandlineparser/commandline)
+
+- [.NET MAUI](https://github.com/dotnet/maui)
+- [ShellProgressBar](https://github.com/Mpdreamz/shellprogressbar)
+- [Command Line Parser](https://github.com/commandlineparser/commandline)
