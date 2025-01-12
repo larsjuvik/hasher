@@ -8,7 +8,7 @@
 ![Static Badge](https://img.shields.io/badge/made_with-C%23-blue)
 
 A cross-platform, simple-to-use application for computing and verifying file-hashes.
-Comes as a GUI- and console-application. Built on .NET 8.
+Comes as a GUI- and console-application. Built on .NET 9.
 
 <p align="center">
   <img src="docs/res/Hasher_GUI.png" style="width: 700px" />
